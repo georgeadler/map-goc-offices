@@ -22,7 +22,7 @@ This map only includes properties that are located in Canada, and that have lati
 
 The 125 km is a distance "as the crow flies"; it's not based on a road network distance. So depending on the road density in your area, this may only serve as a rough approximation.
 
-While the circle of radius 125 km will encapsulate all GoC offices within it, that does not mean that all (or any) of those offices are necessarily available as a work location for any given public servant. This would depend on the nature and departmental occupancy of each office, as well as its seating availability. Unfortunately, this information does not appear to be contained in the DFRP data. If you know of a data source that contains such information, please contact me (see the "Notes and credits" section below).
+While the circle of radius 125 km will encapsulate all GoC offices within it, that does not mean that all (or any) of those offices are necessarily available as a work location for any given public servant. This would depend on the nature and departmental occupancy of each office, as well as its seating availability. Unfortunately, this information does not appear to be contained in the DFRP data. If you know of a data source that contains such information, please contact me (see the "Notes and acknowledgments" section below).
 
 
 ## Running the code
