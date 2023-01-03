@@ -7,13 +7,13 @@ With the announcement of the [common hybrid work model for the Federal Public Se
 
 ## How to use the map
 
-[Opening the map](map_goc_offices.html) will display all GoC offices as small blue circles. Hovering over any of the offices will make a box appear with the name of the site, its street address, municipality and province/territory.
+[Opening the map](https://georgeadler.github.io/map-goc-offices/map_goc_offices.html) will display all GoC offices as small blue circles. Hovering over any of the offices will make a box appear with the name of the site, its street address, municipality and province/territory.
 
 Similar to Google Maps, you can use the scroll wheel on your mouse to zoom in and out on the map. You can hold down the left mouse button to drag the map. In the top-right corner, you can choose between displaying all GoC offices and displaying only GCcoworking locations.
 
 You can also select your location on the map with a left mouse click, and a circle of radius 125 km will be drawn around that marker. Any small blue circles within the larger circle are within 125 km of the selected location. Another left mouse click will update your selected location marker and the surrounding circle.
 
-[Another version of the map](map_labels.html) is the same as above, with the exclusion of the location selection and surrounding circle.
+[Another version of the map](https://georgeadler.github.io/map-goc-offices/map_labels.html) is the same as above, with the exclusion of the location selection and surrounding circle.
 
 
 ## Caveats
