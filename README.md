@@ -2,7 +2,7 @@
 
 The primary goal of this project is to create a simple, user-friendly map that displays the locations of all Government of Canada (GoC) offices, based on the [Directory of Federal Real Property (DFRP)](https://www.tbs-sct.gc.ca/dfrp-rbif/home-accueil-eng.aspx), and also including [GCcoworking spaces](https://www.canada.ca/en/public-services-procurement/news/2019/06/gccoworking-new-flexible-alternative-workplaces-for-government-of-canada-employees.html). 
 
-Additionally, With the announcement of the [common hybrid work model for the Federal Public Service](https://www.canada.ca/en/government/publicservice/staffing/common-hybrid-work-model-federal-public-service.html), some public servants may be interested in examining the possibility of working from alternative workplaces within 125 km of their location, whether it be other GoC offices and/or GCcoworking locations. More information about GCcoworking is available on their [GCpedia page](https://www.gcpedia.gc.ca/wiki/GCcoworking) (only accessible from the GoC network).
+Additionally, with the announcement of the [common hybrid work model for the Federal Public Service](https://www.canada.ca/en/government/publicservice/staffing/common-hybrid-work-model-federal-public-service.html), some public servants may be interested in examining the possibility of working from alternative workplaces within 125 km of their location, whether it be other GoC offices and/or GCcoworking locations. More information about GCcoworking is available on their [GCpedia page](https://www.gcpedia.gc.ca/wiki/GCcoworking) (only accessible from the GoC network).
 
 
 ## How to use the maps
