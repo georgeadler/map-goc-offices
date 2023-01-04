@@ -73,9 +73,9 @@ structure_data_cleaned <- structure_joined_data_filtered %>%
                                                    `Province or Territory Code (TEXT data)` == 47 ~ "SK", 
                                                    `Province or Territory Code (TEXT data)` == 48 ~ "AB", 
                                                    `Province or Territory Code (TEXT data)` == 59 ~ "BC", 
-                                                   `Province or Territory Code (TEXT data)` == 60 ~ "YK", 
-                                                   `Province or Territory Code (TEXT data)` == 61 ~ "NW", 
-                                                   `Province or Territory Code (TEXT data)` == 62 ~ "NT", 
+                                                   `Province or Territory Code (TEXT data)` == 60 ~ "YT", 
+                                                   `Province or Territory Code (TEXT data)` == 61 ~ "NT", 
+                                                   `Province or Territory Code (TEXT data)` == 62 ~ "NU", 
                                                    TRUE ~ "XX")) %>%
   mutate(`Structure Name` = iconv(`Structure Name`, from="latin1", to="ASCII//TRANSLIT")) %>%
   mutate(`Street Address` = iconv(`Street Address`, from="latin1", to="ASCII//TRANSLIT")) %>%
