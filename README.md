@@ -34,9 +34,9 @@ The data subfolder contains the DFRP data for GoC offices as of 2023-01-03. The 
 
 ## Notes and acknowledgments
 
-If you want to provide feedback, you can find my work e-mail on GEDS. I currently work at NRCan. (I'm not including it directly here because of the existence of spam-focused e-mail scrapers that target GitHub among other popular websites.)
+If you want to provide feedback, you can e-mail me at (my GitHub username)(at)gmail(dot)com.
 
-While I am working as a public servant as of the time of this writing, this project was developed and released solely on my own time and in my capacity as a private individual. It has no affiliation with the GoC, and I hold no public opinions on the common hybrid work model for the Federal Public Service.
+While I am working as a public servant as of the time of this writing, this project was developed and released solely in my capacity as a private individual. It has no affiliation with the Government of Canada.
 
 This project was built using R and [Leaflet](https://leafletjs.com/). The R code file includes commented links to online resources (mainly Stack Overflow) where I was able to resolve analogous issues I encountered during development. Thanks to all of those awesome people.
 

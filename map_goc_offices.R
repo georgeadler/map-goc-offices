@@ -1,8 +1,3 @@
-##### George Adler
-##### Last updated 2023-01-03
-
-
-
 library(tidyverse)
 library(leaflet)
 library(htmlwidgets)
@@ -53,11 +48,8 @@ structure_joined_data_filtered <- structure_joined_data %>%
 # 3. Change Latin-1 encoding to ASCII so the HTML output works properly, e.g. change the accented "e" in "Montreal" to a non-accented "e".
 # 4. Add GCcoworking locations. Some of these are already listed as buildings, so we will tag them accordingly.
 #   https://www.canada.ca/en/public-services-procurement/news/2019/06/gccoworking-new-flexible-alternative-workplaces-for-government-of-canada-employees.html
-#   There are supposed to be GCcoworking locations in Vancouver and Edmonton, but their addresses appear to not be publicly available.
-#     Vancouver: https://twitter.com/GccoworkingC/status/1522621444357861376 - NEED TO CHECK THIS
 #   https://msha.ke/cotravailgccoworking
 #   https://www.gcpedia.gc.ca/wiki/GCcoworking [available only on the GC network]
-#   https://gccollab.ca/groups/profile/2060159/engccoworkingfrcotravail-gc
 #   Lat/long coordinates for the manually added sites are from Google Maps.
 
 structure_data_cleaned <- structure_joined_data_filtered %>%
@@ -150,12 +142,15 @@ structure_data_for_mapping <- bind_cols(structure_data_cleaned, structure_data_l
 
 
 # Mapping test: first test a basic map with the buildings listed and popups on mouse click.
+radius_for_mapping <- 8
+
 test_map_popups <- leaflet() %>%
   addTiles() %>%
-  addCircles(data = structure_data_for_mapping, 
-             lat = ~ Latitude, 
-             lng = ~ Longitude, 
-             popup = ~ popup_label)
+  addCircleMarkers(data = structure_data_for_mapping, 
+                   lat = ~ Latitude, 
+                   lng = ~ Longitude, 
+                   radius = radius_for_mapping, 
+                   popup = ~ popup_label)
 
 # Need to save the map output in the working directory, as there is a bug where it doesn't remove the JS dependency files if a relative path is used.
 # Using unlink() is a possibility, but skipping for now to avoid potential issues in Windows.
@@ -185,16 +180,18 @@ table_gccoworking <- structure_data_for_mapping %>%
 
 map_goc_offices <- leaflet() %>%
   addTiles() %>%
-  addCircles(data = table_all_offices, 
-             group = "All Offices", 
-             lat = ~ Latitude, 
-             lng = ~ Longitude, 
-             label = lapply(pull(table_all_offices, popup_label), htmltools::HTML)) %>%
-  addCircles(data = table_gccoworking, 
-             group = "GCcoworking Locations", 
-             lat = ~ Latitude, 
-             lng = ~ Longitude, 
-             label = lapply(pull(table_gccoworking, popup_label), htmltools::HTML))
+  addCircleMarkers(data = table_all_offices, 
+                   group = "All Offices", 
+                   lat = ~ Latitude, 
+                   lng = ~ Longitude, 
+                   radius = radius_for_mapping, 
+                   label = lapply(pull(table_all_offices, popup_label), htmltools::HTML)) %>%
+  addCircleMarkers(data = table_gccoworking, 
+                   group = "GCcoworking Locations", 
+                   lat = ~ Latitude, 
+                   lng = ~ Longitude, 
+                   radius = radius_for_mapping, 
+                   label = lapply(pull(table_gccoworking, popup_label), htmltools::HTML))
 
 
 # For the set of tenant layers, get the list of unique tenants in alphabetical order (excluding "NA").
@@ -208,20 +205,23 @@ list_tenant_names <- structure_data_for_mapping %>%
 for (i in 1:nrow(list_tenant_names)) {
   data_i <- filter(structure_data_for_mapping, `Tenant Name` == list_tenant_names$`Tenant Name`[i])
   
-  map_goc_offices <- addCircles(map_goc_offices, 
-                                data = data_i, 
-                                group = list_tenant_names$`Tenant Name`[i], 
-                                lat = ~ Latitude, 
-                                lng = ~ Longitude, 
-                                label = lapply(pull(data_i, popup_label), htmltools::HTML))
+  map_goc_offices <- addCircleMarkers(map_goc_offices, 
+                                      data = data_i, 
+                                      group = list_tenant_names$`Tenant Name`[i], 
+                                      lat = ~ Latitude, 
+                                      lng = ~ Longitude, 
+                                      radius = radius_for_mapping, 
+                                      label = lapply(pull(data_i, popup_label), htmltools::HTML))
 }
 
 
 # Finally, add the selection control for the groups: users can select between "All Offices", "GCcoworking Locations", and each of the tenants individually.
+# The default selection when first loading the map should be "All Offices".
 
 map_goc_offices <- addLayersControl(map_goc_offices, 
-                                    baseGroups = c("All Offices", "GCcoworking Locations", list_tenant_names$`Tenant Name`), 
-                                    options = layersControlOptions(collapsed = FALSE))
+                                    overlayGroups = c("All Offices", "GCcoworking Locations", list_tenant_names$`Tenant Name`), 
+                                    options = layersControlOptions(collapsed = FALSE)) %>%
+  hideGroup(c("GCcoworking Locations", list_tenant_names$`Tenant Name`))
 
 saveWidget(map_goc_offices, file = "map_goc_offices.html")
 
@@ -259,6 +259,7 @@ map_goc_offices_125km <- map_goc_offices %>%
   ")
 
 saveWidget(map_goc_offices_125km, file = "map_goc_offices_125km.html")
+
 
 
 
