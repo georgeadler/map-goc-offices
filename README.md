@@ -42,3 +42,5 @@ This project was built using R and [Leaflet](https://leafletjs.com/). The R code
 
 Thank you to Reddit user graciejack who [described the appropriate search criteria](https://old.reddit.com/r/CanadaPublicServants/comments/zso3hz/ottawa_offices_in_the_east_end/) for the DFRP.
 
+Special thanks to Darcy Reynard for his thoughtful and valuable feedback during the development process.
+
