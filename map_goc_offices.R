@@ -2,7 +2,7 @@ library(tidyverse)
 library(leaflet)
 library(htmlwidgets)
 library(htmltools)
-
+library(markdown)
 
 
 # The input datasets come from the Directory of Federal Real Property (DFRP).
@@ -223,7 +223,6 @@ map_goc_offices <- addLayersControl(map_goc_offices,
                                     options = layersControlOptions(collapsed = FALSE)) %>%
   hideGroup(c("GCcoworking Locations", list_tenant_names$`Tenant Name`))
 
-saveWidget(map_goc_offices, file = "map_goc_offices.html")
 
 
 
@@ -258,8 +257,19 @@ map_goc_offices_125km <- map_goc_offices %>%
     }
   ")
 
+
+unlink("./build/", recursive = TRUE)
+dir.create("./build/", recursive = TRUE)
+
+file.copy("./data/", "./build/",
+  recursive = TRUE,
+  copy.mode = TRUE,
+  copy.date = FALSE
+)
+
+saveWidget(map_goc_offices, file = "map_goc_offices.html")
+file.copy("./map_goc_offices.html", "./build/map_goc_ofices.html")
 saveWidget(map_goc_offices_125km, file = "map_goc_offices_125km.html")
+file.copy("./map_goc_offices_125km.html", "./build/map_goc_offices_125km.html")
 
-
-
-
+markdownToHTML("index.md", "./build/index.html")
