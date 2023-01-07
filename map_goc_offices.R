@@ -269,7 +269,9 @@ file.copy("./data/", "./build/",
 
 saveWidget(map_goc_offices, file = "map_goc_offices.html")
 file.copy("./map_goc_offices.html", "./build/map_goc_ofices.html")
+unlink("./map_goc_offices.html")
 saveWidget(map_goc_offices_125km, file = "map_goc_offices_125km.html")
 file.copy("./map_goc_offices_125km.html", "./build/map_goc_offices_125km.html")
+unlink("./map_goc_offices_125km.html")
 
 markdownToHTML("index.md", "./build/index.html")

@@ -18,7 +18,7 @@ The data subfolder contains the DFRP data for GoC offices as of 2023-01-03. The 
 1. Click the green `Code` button
 2. Run from command line
    ``` bash
-   RScript map_goc_offices.R
+   RScript --vanilla map_goc_offices.R
    ```
 
 This is compatible with the entire VSCode family of IDEs.
