@@ -1,0 +1,32 @@
+{
+	"name": "R (rocker/r-ver base)",
+	"image": "ghcr.io/rocker-org/devcontainer/geospatial:4",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"REditorSupport.r",
+				"donjayamanne.git-extension-pack",
+				"mhutchie.git-graph",
+				"yandeu.five-server",
+				"RDebugger.r-debugger"
+			]
+		}
+	}
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "R --version",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
