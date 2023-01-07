@@ -258,20 +258,21 @@ map_goc_offices_125km <- map_goc_offices %>%
   ")
 
 
-unlink("./build/", recursive = TRUE)
-dir.create("./build/", recursive = TRUE)
+builddir <- "./docs/"
+unlink(builddir, recursive = TRUE)
+dir.create(builddir, recursive = TRUE)
 
-file.copy("./data/", "./build/",
+file.copy("./data/", builddir,
   recursive = TRUE,
   copy.mode = TRUE,
   copy.date = FALSE
 )
 
 saveWidget(map_goc_offices, file = "map_goc_offices.html")
-file.copy("./map_goc_offices.html", "./build/map_goc_ofices.html")
+file.copy("./map_goc_offices.html", paste(builddir, "map_goc_ofices.html"))
 unlink("./map_goc_offices.html")
 saveWidget(map_goc_offices_125km, file = "map_goc_offices_125km.html")
-file.copy("./map_goc_offices_125km.html", "./build/map_goc_offices_125km.html")
+file.copy("./map_goc_offices_125km.html", paste(builddir, "map_goc_offices_125km.html"))
 unlink("./map_goc_offices_125km.html")
 
-markdownToHTML("index.md", "./build/index.html")
+markdownToHTML("index.md", paste(builddir, "index.html"))
