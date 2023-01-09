@@ -29,7 +29,7 @@ While the circle of radius 125 km will encapsulate all GoC offices within it, th
 
 If you want to run this code yourself, you can download [the repository](https://github.com/georgeadler/map-goc-offices), as well as installing [R](https://www.r-project.org/) and [RStudio](https://posit.co/products/open-source/rstudio/).
 
-The data subfolder contains the DFRP data for GoC offices as of 2023-01-03. The R code file explains the steps needed to update the data.
+The data subfolder contains the DFRP data for GoC offices as of 2023-01-06. The R code file explains the steps needed to update the data.
 
 
 ## Notes and acknowledgments
