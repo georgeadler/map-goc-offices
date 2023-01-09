@@ -41,13 +41,16 @@ structure_joined_data <- propertycore_data %>%
 #   2. Remove buildings with no latitude/longitude coordinates.
 #   3. Keep only buildings in Canada - there are a few overseas.
 #   4. Keep only buildings with structure use type "Office" or "Law Enforcement and Corrections", or property use type "Office".
-# As of 2023-01-06, there are 16,785 rows after the above filtering.
+# As of 2023-01-06, there are 16,856 rows after the above filtering.
 structure_joined_data_filtered <- structure_joined_data %>%
   filter(`Security Designation.y` == "Not Protected") %>%
   drop_na(`Latitude.y`, `Longitude.y`) %>%
   filter(`Country.y` == "Canada") %>%
   #filter(`Structure Use` == "Office" | `Structure Use` == "Law Enforcement and Corrections") %>%
-  filter(`Structure Use` == "Office" | `Structure Use` == "Law Enforcement and Corrections" | `Primary Use Group` == "Office") %>%
+  filter(`Structure Use` == "Office" | 
+           `Structure Use` == "Law Enforcement and Corrections" | 
+           `Structure Use` == "Legislative, Judicial, and Diplomatic" | 
+           `Primary Use Group` == "Office") %>%
   distinct(`Parcel Number (TEXT data)`, `Structure Number (TEXT data)`, `Tenant Name`, `Structure Use`, 
            .keep_all = TRUE)
 
@@ -206,7 +209,8 @@ structure_data_labels <- structure_data_cleaned %>%
   mutate(popup_label = iconv(popup_label, from="latin1", to="ASCII//TRANSLIT"))
 
 structure_data_for_mapping <- bind_cols(structure_data_cleaned, structure_data_labels)
-# As of 2023-01-06, there are 5,824 rows for mapping.
+# write_csv(structure_data_for_mapping, "structure_data_for_mapping.csv")
+# As of 2023-01-06, there are 5,869 rows for mapping.
 
 
 
