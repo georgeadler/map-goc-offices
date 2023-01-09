@@ -40,8 +40,8 @@ structure_joined_data <- propertycore_data %>%
 #   1. Remove buildings with "Protected" security designation and coordinates - these are mostly GAC buildings.
 #   2. Remove buildings with no latitude/longitude coordinates.
 #   3. Keep only buildings in Canada - there are a few overseas.
-#   4. Keep only buildings with structure use type "Office" or "Law Enforcement and Corrections", or property use type "Office".
-# As of 2023-01-06, there are 16,856 rows after the above filtering.
+#   4. Keep only buildings with specific use types.
+# As of 2023-01-06, there are 17,857 rows after the above filtering.
 structure_joined_data_filtered <- structure_joined_data %>%
   filter(`Security Designation.y` == "Not Protected") %>%
   drop_na(`Latitude.y`, `Longitude.y`) %>%
@@ -50,6 +50,7 @@ structure_joined_data_filtered <- structure_joined_data %>%
   filter(`Structure Use` == "Office" | 
            `Structure Use` == "Law Enforcement and Corrections" | 
            `Structure Use` == "Legislative, Judicial, and Diplomatic" | 
+           `Structure Use` == "Research and Technological Development" | 
            `Primary Use Group` == "Office") %>%
   distinct(`Parcel Number (TEXT data)`, `Structure Number (TEXT data)`, `Tenant Name`, `Structure Use`, 
            .keep_all = TRUE)
@@ -210,7 +211,7 @@ structure_data_labels <- structure_data_cleaned %>%
 
 structure_data_for_mapping <- bind_cols(structure_data_cleaned, structure_data_labels)
 # write_csv(structure_data_for_mapping, "structure_data_for_mapping.csv")
-# As of 2023-01-06, there are 5,869 rows for mapping.
+# As of 2023-01-06, there are 6,373 rows for mapping.
 
 
 
